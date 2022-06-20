@@ -1,8 +1,38 @@
 import React from "react";
+import swal from "sweetalert";
 
 import "./Contact.css";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+    const form = React.useRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        emailjs
+            .sendForm(
+                "service_umzeyds",
+                "template_4w4sukc",
+                form.current,
+                "KZVoASHVGbJ8gXPOE"
+            )
+            .then(
+                (result) => {
+                    if (result.status === 200) {
+                        swal(
+                            "Success",
+                            "Your message has been sent",
+                            "success"
+                        );
+                    } else {
+                        swal("Error", "Something went wrong", "error");
+                    }
+                },
+                (error) => {
+                    console.log(error.text);
+                }
+            );
+    };
     return (
         <section id="contact">
             <div className="container">
@@ -13,9 +43,10 @@ export default function Contact() {
                 <div className="row">
                     <div className="col-lg-8 mx-auto">
                         <form
+                            onSubmit={handleSubmit}
                             id="contactForm"
                             name="sentMessage"
-                            noValidate="novalidate"
+                            ref={form}
                         >
                             <div className="control-group">
                                 <div className="mb-0 form-floating controls pb-2">
@@ -23,8 +54,9 @@ export default function Contact() {
                                         className="form-control"
                                         type="text"
                                         id="name"
-                                        required=""
+                                        required
                                         placeholder="Name"
+                                        name="from_name"
                                     />
                                     <label className="form-label">Name</label>
                                     <small className="form-text text-danger help-block"></small>
@@ -36,8 +68,9 @@ export default function Contact() {
                                         className="form-control"
                                         type="email"
                                         id="email"
-                                        required=""
+                                        required
                                         placeholder="Email Address"
+                                        name="email"
                                     />
                                     <label className="form-label">
                                         Email Address
@@ -52,6 +85,7 @@ export default function Contact() {
                                         id="message"
                                         required
                                         placeholder="Message"
+                                        name="message"
                                     ></textarea>
                                     <label className="form-label">
                                         Message
