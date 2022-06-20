@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.6ba189fc.css",
+    "main.js": "/portfolio/static/js/main.a77110c5.js",
+    "static/js/787.28cb0dcd.chunk.js": "/portfolio/static/js/787.28cb0dcd.chunk.js",
+    "static/media/2.png": "/portfolio/static/media/2.b851f57e0e6c64e70ecd.png",
+    "static/media/3.png": "/portfolio/static/media/3.a8d784e64d126341047b.png",
+    "static/media/1.png": "/portfolio/static/media/1.418c9b8d6c06a6928c47.png",
+    "static/media/rn-6.png": "/portfolio/static/media/rn-6.9cc47d50bd43712db736.png",
+    "static/media/rn-1.png": "/portfolio/static/media/rn-1.021447d362843c09ff70.png",
+    "static/media/rn-3.png": "/portfolio/static/media/rn-3.01d0f6c898d646ff78d4.png",
+    "static/media/rn-4.png": "/portfolio/static/media/rn-4.7097ec99148337cd9d19.png",
+    "static/media/rn-5.png": "/portfolio/static/media/rn-5.c885a0e7b913cd417367.png",
+    "static/media/rn-2.png": "/portfolio/static/media/rn-2.25ad67bdc92b2d46c981.png",
+    "static/media/naimur.jpg": "/portfolio/static/media/naimur.88c1b4cea4f318090047.jpg",
+    "index.html": "/portfolio/index.html",
+    "main.6ba189fc.css.map": "/portfolio/static/css/main.6ba189fc.css.map",
+    "main.a77110c5.js.map": "/portfolio/static/js/main.a77110c5.js.map",
+    "787.28cb0dcd.chunk.js.map": "/portfolio/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ba189fc.css",
+    "static/js/main.a77110c5.js"
+  ]
+}
