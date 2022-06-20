@@ -7,7 +7,9 @@ import rn4 from "../../images/portfolio/rn/rn-4.png";
 import rn5 from "../../images/portfolio/rn/rn-5.png";
 import rn6 from "../../images/portfolio/rn/rn-6.png";
 
-import rc1 from "../../images/portfolio/react/1.png";
+import rc1 from "../../images/portfolio/rc/1.png";
+import rc2 from "../../images/portfolio/rc/2.png";
+import rc3 from "../../images/portfolio/rc/3.png";
 
 export default function Portfolio() {
     const Portfolios = [
@@ -100,47 +102,61 @@ export default function Portfolio() {
         },
         {
             id: 7,
-            title: "ECard System",
-            description: "Saving digital Card System",
-            // image: rc1,
-            technologies: [
-                "React Native",
-                "React Navigation",
-                "Reanimated2",
-                "Expo",
-                "TypeScript",
-            ],
+            title: "Dgital Blockchain",
+            description: "Blockchain based landing page",
+            image: rc1,
+            technologies: ["React js", "Styled-components"],
             category: "react",
         },
         {
             id: 8,
-            title: "ECard System",
-            description: "Saving digital Card System",
-            // image: rc2,
-            technologies: [
-                "React Native",
-                "React Navigation",
-                "Reanimated2",
-                "Expo",
-                "TypeScript",
-            ],
+            title: "Crypto wallet",
+            description: "Crypto based landing page",
+            image: rc2,
+            technologies: ["React js", "Styled-components"],
             category: "react",
         },
         {
             id: 9,
-            title: "ECard System",
-            description: "Saving digital Card System",
-            // image: rc3,
-            technologies: [
-                "React Native",
-                "React Navigation",
-                "Reanimated2",
-                "Expo",
-                "TypeScript",
-            ],
+            title: "Dechiphermoney",
+            description: "Customizable landing page for Games",
+            image: rc3,
+            technologies: ["React Js", "SCSS"],
             category: "react",
         },
     ];
+    const categories = [
+        {
+            id: 1,
+            name: "all",
+            title: "All",
+        },
+        {
+            id: 2,
+            name: "react-native",
+            title: "React Native",
+        },
+        {
+            id: 3,
+            name: "react",
+            title: "React",
+        },
+    ];
+
+    const [selectedCategory, setSelectedCategory] = React.useState("all");
+
+    const handleCategoryChange = (category) => {
+        setSelectedCategory(category);
+    };
+
+    const filteredPortfolios = Portfolios.filter((portfolio) => {
+        if (selectedCategory === "all") {
+            return portfolio;
+        } else {
+            return portfolio.category === selectedCategory;
+        }
+    });
+
     return (
         <section id="portfolio" className="portfolio">
             <div className="container">
@@ -149,18 +165,22 @@ export default function Portfolio() {
                 </h2>
                 <hr className="star-dark mb-5" />
                 <div className="d-xxl-flex justify-content-xxl-center mb-4">
-                    <button className="btn btn-primary mx-2" type="button">
-                        All
-                    </button>
-                    <button className="btn btn-primary mx-2" type="button">
-                        React Js
-                    </button>
-                    <button className="btn btn-primary mx-2" type="button">
-                        React Native
-                    </button>
+                    {categories.map((category) => (
+                        <button
+                            key={category.id}
+                            onClick={() => handleCategoryChange(category.name)}
+                            className={`btn btn-primary mx-2 ${
+                                selectedCategory === category.name
+                                    ? "active"
+                                    : ""
+                            }`}
+                        >
+                            {category.title}
+                        </button>
+                    ))}
                 </div>
                 <div className="row">
-                    {Portfolios.map((portfolio) => (
+                    {filteredPortfolios.map((portfolio) => (
                         <PortfolioCard
                             key={portfolio.id}
                             title={portfolio.title}
