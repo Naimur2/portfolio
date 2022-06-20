@@ -37,7 +37,7 @@ export default function Portfolio() {
                     Portfolio
                 </h2>
                 <hr className="star-dark mb-5" />
-                <div className="d-xxl-flex justify-content-xxl-center mb-4">
+                <div className="d-flex justify-content-center mb-4">
                     {categories.map((category) => (
                         <Category
                             key={category.id}
