@@ -1,10 +1,43 @@
 import React from "react";
+import NavItem from "./components/NavItem";
 
 export default function NavBar() {
+    const navRef = React.useRef(null);
+    const collapsRef = React.useRef(null);
+    const navItems = [
+        { title: "Portfolio", url: "#portfolio" },
+        { title: "About", url: "#about" },
+        { title: "Contact", url: "#contact" },
+    ];
+
+    React.useEffect(() => {
+        const mainNav = navRef.current;
+        const collapseNavbar = function () {
+            var scrollTop =
+                window.pageYOffset !== undefined
+                    ? window.pageYOffset
+                    : (
+                          document.documentElement ||
+                          document.body.parentNode ||
+                          document.body
+                      ).scrollTop;
+
+            if (scrollTop > 100) {
+                mainNav.classList.add("navbar-shrink");
+            } else {
+                mainNav.classList.remove("navbar-shrink");
+            }
+        };
+        window.addEventListener("scroll", collapseNavbar);
+        return () => {
+            window.removeEventListener("scroll", collapseNavbar);
+        };
+    }, []);
     return (
         <nav
             className="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase"
             id="mainNav"
+            ref={navRef}
         >
             <div className="container">
                 <a className="navbar-brand" href="#page-top">
@@ -20,33 +53,17 @@ export default function NavBar() {
                 >
                     <i className="fa fa-bars"></i>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarResponsive">
-                    <ul className="navbar-nav ms-auto">
-                        <li className="nav-item mx-0 mx-lg-1">
-                            <a
-                                className="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#portfolio"
-                            >
-                                Portfolio
-                            </a>
-                        </li>
-                        <li className="nav-item mx-0 mx-lg-1">
-                            <a
-                                className="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#about"
-                            >
-                                About
-                            </a>
-                        </li>
-                        <li className="nav-item mx-0 mx-lg-1">
-                            <a
-                                className="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#contact"
-                            >
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+                <div
+                    ref={collapsRef}
+                    className="collapse navbar-collapse"
+                    id="navbarResponsive"
+                >
+                    <NavItem
+                        navItems={navItems}
+                        onClick={() =>
+                            collapsRef.current.classList.remove("show")
+                        }
+                    />
                 </div>
             </div>
         </nav>

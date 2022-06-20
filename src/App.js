@@ -1,4 +1,5 @@
 
+import React from 'react';
 import './App.css';
 import About from './sections/About/About';
 import Contact from './sections/Contact/Contact';
@@ -8,6 +9,8 @@ import NavBar from './sections/NavBar/NavBar';
 import Portfolio from './sections/Portfolio/Portfolio';
 
 function App() {
+  const [activeSection, setActiveSection] = React.useState('portfolio');
+
   return (
     <>
       <NavBar />

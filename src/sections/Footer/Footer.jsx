@@ -1,4 +1,6 @@
 import React from "react";
+import { socialLinks } from "../../data";
+import SLink from "./components/SLink";
 
 export default function Footer() {
     return (
@@ -14,42 +16,13 @@ export default function Footer() {
                     <div className="col-md-4 mb-5 mb-lg-0">
                         <h4 className="text-uppercase">Around the Web</h4>
                         <ul className="list-inline">
-                            <li className="list-inline-item">
-                                <a
-                                    className="btn btn-outline-light text-center btn-social rounded-circle"
-                                    role="button"
-                                    href="#"
-                                >
-                                    <i className="fa fa-facebook fa-fw"></i>
-                                </a>
-                            </li>
-                            <li className="list-inline-item">
-                                <a
-                                    className="btn btn-outline-light text-center btn-social rounded-circle"
-                                    role="button"
-                                    href="#"
-                                >
-                                    <i className="fa fa-linkedin fa-fw"></i>
-                                </a>
-                            </li>
-                            <li className="list-inline-item">
-                                <a
-                                    className="btn btn-outline-light text-center btn-social rounded-circle"
-                                    role="button"
-                                    href="#"
-                                >
-                                    <i className="fa fa-twitter fa-fw"></i>
-                                </a>
-                            </li>
-                            <li className="list-inline-item">
-                                <a
-                                    className="btn btn-outline-light text-center btn-social rounded-circle"
-                                    role="button"
-                                    href="#"
-                                >
-                                    <i className="fa fa-github fa-fw"></i>
-                                </a>
-                            </li>
+                            {socialLinks.map((item) => (
+                                <SLink
+                                    key={item.name}
+                                    link={item.url}
+                                    icon={item.icon}
+                                />
+                            ))}
                         </ul>
                     </div>
                 </div>

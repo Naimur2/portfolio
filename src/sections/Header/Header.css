@@ -3,6 +3,6 @@
     width: 150px;
     border-radius: 50%;
     overflow: hidden;
-    background: url("../../images/naimur.jpg") left / cover no-repeat;
+    background: url("../../assets/images/naimur.jpg") left / cover no-repeat;
     margin-bottom: 3rem;
 }

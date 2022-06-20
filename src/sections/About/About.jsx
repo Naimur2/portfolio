@@ -30,7 +30,8 @@ export default function About() {
                     <a
                         className="btn btn-outline-light btn-xl"
                         role="button"
-                        href="#"
+                        href="../../assets/pdfs/resume_naimur.pdf"
+                        download={true}
                     >
                         <i className="fa fa-download me-2"></i>
                         <span>Download Resume!</span>
