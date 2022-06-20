@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function PortfolioCard({
     title,
@@ -9,7 +10,13 @@ export default function PortfolioCard({
     website,
 }) {
     return (
-        <div className="col-md-6 col-lg-4 mb-4 ">
+        <motion.div
+            layout
+            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="col-md-6 col-lg-4 mb-4 "
+        >
             <div className="px-2 card portf-card">
                 <div className="portfolio-image px-2 py-4">
                     <img className="portfolo-image" src={image} alt={title} />
@@ -49,6 +56,6 @@ export default function PortfolioCard({
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

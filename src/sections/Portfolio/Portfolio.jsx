@@ -1,5 +1,7 @@
 import React from "react";
 import PortfolioCard from "../../components/PortfolioCard";
+import { motion, AnimatePresence } from "framer-motion";
+
 import rn1 from "../../images/portfolio/rn/rn-1.png";
 import rn2 from "../../images/portfolio/rn/rn-2.png";
 import rn3 from "../../images/portfolio/rn/rn-3.png";
@@ -123,6 +125,7 @@ export default function Portfolio() {
             image: rc3,
             technologies: ["React Js", "SCSS"],
             category: "react",
+            website: "https://deciphermoney.netlify.app/",
         },
     ];
     const categories = [
@@ -157,6 +160,17 @@ export default function Portfolio() {
         }
     });
 
+    // sort by first letter of title
+    const sortedPortfolios = filteredPortfolios.sort((a, b) => {
+        if (a.title < b.title) {
+            return -1;
+        }
+        if (a.title > b.title) {
+            return 1;
+        }
+        return 0;
+    });
+
     return (
         <section id="portfolio" className="portfolio">
             <div className="container">
@@ -179,19 +193,22 @@ export default function Portfolio() {
                         </button>
                     ))}
                 </div>
-                <div className="row">
-                    {filteredPortfolios.map((portfolio) => (
-                        <PortfolioCard
-                            key={portfolio.id}
-                            title={portfolio.title}
-                            description={portfolio.description}
-                            image={portfolio.image}
-                            technologies={portfolio.technologies}
-                            github={portfolio.github}
-                            website={portfolio.website}
-                        />
-                    ))}
-                </div>
+
+                <motion.div layout className="row">
+                    <AnimatePresence>
+                        {sortedPortfolios.map((portfolio) => (
+                            <PortfolioCard
+                                key={portfolio.id}
+                                title={portfolio.title}
+                                description={portfolio.description}
+                                image={portfolio.image}
+                                technologies={portfolio.technologies}
+                                github={portfolio.github}
+                                website={portfolio.website}
+                            />
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
             </div>
         </section>
     );
